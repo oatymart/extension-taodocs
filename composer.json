@@ -1,11 +1,11 @@
 {
 
-    "name": "oat/taoDocs",
-    "description" : "",
+    "name": "oatymart/extension-taodocs",
+    "description" : "A test extension",
     "type" : "tao-extension",
     "authors" : [
         {
-        "name": "Open Assessment Technologies SA"
+        "name": "Martin Nicholson"
         }
     ],
     "keywords" : [
