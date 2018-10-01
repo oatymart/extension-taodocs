@@ -1,1 +1,0 @@
-Hello my name is <?=(get_data('name'))?>

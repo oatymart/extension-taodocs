@@ -36,17 +36,75 @@ class TaoDocs extends \tao_actions_CommonModule {
      */
     public function __construct(){
         parent::__construct();
+        $this->pilots = [];
     }
 
     /**
      * A possible entry point to tao
      */
     public function index() {
-        echo __("Hello World");
+        echo __("Hello World"); // direct output
     }
 
-    public function templateExample() {
-        $this->setData('author', 'Open Assessment Technologies SA');
-        $this->setView('TaoDocs/templateExample.tpl');
+    public function helloExample() {
+        $this->setData('name', 'Martin');
+        $this->setView('TaoDocs/myName.tpl');
     }
+
+    public function myName() {
+        $name = 'tao';
+
+        if($this->hasRequestParameter('uri')) {
+            $uri = $this->getRequestParameter('uri');
+            if(array_key_exists($uri, $this->pilots)) {
+                $name = $this->pilots[$uri];
+            }
+        }
+
+        $this->setData('name', $name);
+        $this->setView('TaoDocs/myName.tpl');
+    }
+
+    public function getPilotsList() {
+        $this->pilots =
+            [
+                'luke',
+                'biggs',
+                'wedge',
+                'vader'
+            ];
+
+        $data = array(
+            'data'  => __("Pilots"),
+            'attributes' => array(
+                'id' => 1,
+                'class' => 'node-class'
+            ),
+            'children' => array()
+        );
+
+        foreach ($this->pilots as $index => $name) {
+            $data['children'][] =  array(
+                'data'  => 'my name is ' . ucfirst($name),
+                'attributes' => array(
+                    'id' => 'name_' . $index,
+                    'class' => 'node-instance'
+                )
+            );
+        }
+        echo json_encode($data);
+    }
+
+    public function vader() {
+        $name = '';
+        if($this->hasRequestParameter('uri')) {
+            $uri = $this->getRequestParameter('uri');
+            if(array_key_exists($uri, $this->pilots)) {
+                $name = $this->pilots[$uri];
+            }
+        }
+        echo ucfirst($name) . ', I\'m your father';
+
+    }
+
 }

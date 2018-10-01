@@ -3,9 +3,30 @@
 <structures>
 	<structure id="taoDocs_main" name="taoDocs" level="15" group="main">
 		<description />
+		<icon id="icon-folder"/>
 		<sections>
-			<section id="taoDocs_main" name="taoDocs" url="/taoDocs/TaoDocs/index" />
-			<section id="taoDocs_other" name="Template" url="/taoDocs/TaoDocs/templateExample" />
-		</sections>
+			<section id="taoDocs_main" name="Hello World" url="/taoDocs/TaoDocs/index" />
+			<section id="taoDocs_other1" name="Hello from .tpl" url="/taoDocs/TaoDocs/helloExample" />
+			<section id="taoDocs_other2" name="Hello Pilots" url="/taoDocs/TaoDocs/getPilotsList">
+                <trees>
+                    <tree name="Pilots"
+                          className="Pilots"
+                          rootNode="http://www.tao.lu/Ontologies/TAOGroup.rdf#Group"
+                          dataUrl="/taoDocs/TaoDocs/getPilotsList"
+                    />
+                </trees>
+                <actions>
+                    <action id="vader" name="Vader" url="/taoDocs/vader" group="tree" context="class" binding="vader">
+                        <icon id="icon-user"/>
+                    </action>
+                    <action id="group-class-new" name="New class" url="/taoGroups/Groups/addSubClass" context="resource" group="tree" binding="subClass">
+                        <icon id="icon-folder-open"/>
+                    </action>
+                    <action id="group-delete" name="Delete" url="/taoGroups/Groups/delete" context="resource" group="tree" binding="removeNode">
+                        <icon id="icon-bin"/>
+                    </action>
+                </actions>
+            </section>
+        </sections>
 	</structure>
 </structures>
